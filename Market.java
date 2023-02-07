@@ -37,7 +37,12 @@ public class Market extends Thread {
                                 System.out.println("The amount after purchase :" + shares.getName() + i1);
                             } else {
                                 System.out.println("The purchase attempt for " + customer.getName() + " was unsuccessful");
+                                
+                                LocalDateTime timeOfEnd = LocalDateTime.now();
 
+                                if (timeOfEnd.isAfter(start)) {
+                                    interrupt();
+                                }
                             }
                         }
                     }
